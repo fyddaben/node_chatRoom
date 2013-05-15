@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>蝉-首页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+  </head>
+  <body>
+     <div id="pc_version">
+
+       <div class="page_head">
+            
+       </div>
+       <div class="page_content" id="pContent">
+            
+       </div>
+     </div>
+
+
+     <!--  <div data-role="page" id="mobile_version">
+           <div data-role="header">
+             <h1>禅</h1>
+           </div> /header
+          
+            <div data-role="content" id="pcContent"> 
+                
+            </div>
+              
+           
+        </div>    -->
+
+     
+     
+     <script type="text/javascript" src="/javascripts/handlerbar.js"></script>
+      <script id="pc-template" type="text/x-handlebars-template"> 
+        {{#each records}}
+        <div class="room_box" >
+                <a href="/room/{{this.room_id}}"> <div class="room_doorbell">
+                    <img src="{{this.roombackimg}}"/>
+                       <!--  <div class="room_person_num" >
+                             {{this.room_name}}
+                         </div>
+                         <div class="room_number" >
+
+                         </div> -->
+                 </div></a>
+        </div>
+        {{/each}}
+      </script>
+       <script id="mobile-template" type="text/x-handlebars-template"> 
+       
+       <!-- <div class="ui-grid-b">
+                 {{#each records}}
+                   
+                   {{#if this.a}}
+                  <div class="ui-block-a chat_block">
+                    {{/if}}
+                    {{#if this.b}}
+                  <div class="ui-block-b chat_block">
+                    {{/if}}
+                    {{#if this.c}}
+                  <div class="ui-block-c chat_block">
+                    {{/if}}
+                        <div class="room_doorbell">
+                        
+
+                         <div class="room_person_num">
+                              {{this.onlineNum}}
+                         </div>
+                          <div class="room_number">
+                             {{this.name}}
+                         </div>
+
+                        </div>
+                  </div>
+
+                  {{/each}}
+
+        </div>--><!-- /grid-b -->
+        
+      </script>
+
+     <script>
+               var str='<%=data%>';
+                var index=str.indexOf("&quot;");
+               while(index!=-1){
+                       str=str.replace("&quot;","\"");
+                   index=str.indexOf("&quot;");
+               }
+                var room_list=JSON.parse(str);
+
+     </script>
+     <script src="/javascripts/jquery.js"></script>
+
+     <script type="text/javascript" src="/javascripts/load.js"></script>
+     <script type="text/javascript" src="/javascripts/Model.js"></script>
+     <script type="text/javascript" src="/javascripts/main_index.js"></script>
+     <script type="text/javascript" src="/javascripts/init_index.js"></script>
+
+      <script>
+
+
+      </script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>蝉-首页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+     <style>
+         .xline{
+             width: 720px;
+             height: 1px;
+             border-bottom: 1px solid black;
+             position: absolute;
+             margin-top: 20px;
+             z-index: 99;
+             float: left;
+         }
+         .yline{
+             height: 270px;
+             width: 1px;
+             border-right: 1px solid black;
+             position: absolute;
+             margin-top: 20px;
+             z-index: 94;
+             float: left;
+         }
+         .panel{
+             position: absolute;
+
+         }
+
+     </style>
+</head>
+<body>
+      <div class="panel">
+          <canvas id="myCanvas" class="canvas" width="800px" height="400px" style="border: 1px solid #ccc;position: relative">
+
+
+          </canvas>
+      </div>
+
+
+    <div class="xline"></div>
+   <div class="yline"></div>
+
+   <script src="/javascripts/jquery.js"></script>
+
+   <script src="/javascripts/Model.js"></script>
+   
+   <script src="/javascripts/test.js"></script>
+</body>
+</html>

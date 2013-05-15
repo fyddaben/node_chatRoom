@@ -1,0 +1,89 @@
+body{
+	margin: 0px;
+	padding: 0px;
+	background: #ccc;
+}
+
+.page_head{
+	height: 51px;
+	
+}
+.page_content{
+	width: 612px;
+	margin: 0px auto;
+	background-color: #272822;
+	height: 612px;
+}
+.room_box{
+	border: 2px solid #ccc;
+    float: left;
+    width: 200px;
+    height: 200px;
+
+}
+.room_box a{
+	text-decoration: none;
+}
+.room_doorbell{
+	
+	width: 160px;
+	height: 160px;
+
+    margin: 20px auto ;
+    border-radius: 30px;
+    -moz-border-radius:30px;
+    -webkit-border-radius: 30px;
+
+    box-shadow: 5px 5px 5px 2px #888888;
+    -moz-box-shadow:5px 5px 5px 2px #888888;
+    -webkit-box-shadow:5px 5px 5px 2px #888888;
+
+}
+.room_doorbell:hover{
+     margin-left: 25px;
+     margin-top: 25px;
+     box-shadow: none;
+     -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+}
+@import url(http://fonts.googleapis.com/css?family=Meie+Script);
+.room_person_num{
+	height: 78px;
+	border-bottom: 1px solid #ccc;
+	border-top-left-radius: 30px;
+	border-top-right-radius: 30px;
+    
+
+    font-size: 40px;
+    line-height: 78px;
+    text-align: center;
+    background-color: #eff;
+
+}
+.room_number{
+	border-bottom-left-radius: 30px;
+	border-bottom-right-radius: 30px;
+	font-size: 25px;
+	color: #fff;
+	line-height: 78px;
+    text-align: center;
+    
+}
+.room_number img{
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+.room_number:before{
+	content: ""; 
+	display: block;
+	width: 0px;
+	height: 0px;
+	border-top: 10px solid #eff;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	position: absolute;
+	margin-left: 60px;
+	margin-top: -2px;
+    z-index: 99px;
+}

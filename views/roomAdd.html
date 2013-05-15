@@ -1,0 +1,114 @@
+
+          
+ <!DOCTYPE html>
+<html>
+  <head>
+    <title>Bootstrap 101 Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/uploadify.css">
+      <style type="text/css">
+          .span12{
+              height: 100px;
+          }
+          .img{
+              width: 550px;
+
+              margin-top: 150px;
+          }
+          .img img{
+              width: 100px;
+              height: 100px;
+              margin-left: 10px;
+
+          }
+          img{
+              width: 100px;
+              height: 100px;
+              margin-left: 10px;
+
+          }
+      </style>
+  </head>
+  <body>
+   <div class="container">
+    <form action="/room"  method="post" class="navbar-search">
+           <div class="row">
+              <div class="span12">
+                <label for="text-basic">聊天室名字:</label>
+                <input type="text" name="room_name"  />
+              </div>
+               </div>
+            <div class="row">
+              <div class="span12">
+                <label for="text-basic">背景图片(200*200):</label>
+                  <input type="file" name="file_upload" id="back_file_upload" />
+              </div>
+               <div id="img_box2" ></div>
+            </div>
+            <div class="row">
+              <div class="span12">
+                 <label for="text-basic">聊天室关联的头像图片组:</label>
+                  <input type="file" name="file_upload" id="file_upload" />
+              </div>
+
+                <div id="img_box" class="img"></div>
+
+            </div>
+            <div class="row">
+            <div class="span12">
+
+                <input type="submit"  />
+            </div>
+
+           </div>
+
+   </form>
+             
+
+  </div>
+    
+    <script src="/javascripts/jquery.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+
+   <script type="text/javascript" src="/javascripts/jquery.uploadify.min.js"></script>
+   <script type="text/javascript" >
+       $(function() {
+           $('#file_upload').uploadify({
+               'swf'     : '/images/uploadify.swf',
+               'formData':{
+                   'userid':'用户id',
+                   'username':'用户名',
+                   'rnd':'加密密文'
+               },
+               'cancelImg ':'/images/uploadify-cancel.png',
+               'fileTypeExts' : '*.gif; *.jpg; *.png',
+
+               'uploader' : '/fileupload',
+               'onUploadSuccess' : function(file, data, response) {
+                   var img="<img src=\""+data+"\"/><input type=\"hidden\" name=\"head_imgs\" value=\""+data+"\"/>";
+                   $("#img_box").append(img);
+               }
+           });
+           $('#back_file_upload').uploadify({
+               'swf'     : '/images/uploadify.swf',
+               'formData':{
+                   'userid':'用户id',
+                   'username':'用户名',
+                   'rnd':'加密密文'
+               },
+               'cancelImg ':'/images/uploadify-cancel.png',
+               'fileTypeExts' : '*.gif; *.jpg; *.png',
+
+               'uploader' : '/fileupload',
+               'onUploadSuccess' : function(file, data, response) {
+                   var img="<img src=\""+data+"\"/><input type=\"hidden\" name=\"back_img\" value=\""+data+"\"/>";
+                   $("#img_box2").append(img);
+               }
+           });
+       });
+   </script>
+  </body>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>蝉-内容页</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  </head>
+  <body>
+       <div id="pc_version">
+       <div class="chat_box clearfix" id="pc_showPanel">
+            
+       </div>
+      <!--内容输入框-->
+      <div id="fixed">
+
+          <div class="input_frame clearfix" >
+                  <div class="input_img_frame" >
+                       <img src="/images/psv_assassin.png" id="user_headImg" />
+                  </div>
+                  <div class="input_content_frame">
+                        <div class="content_frame_saything">
+                           <textarea name="message" id="chatContent1" placeholder="点击头像更换角色" style="height: 54px;"></textarea>
+                        </div>
+                        <div class="content_frame_button">
+                            <div class="content_tool">&nbsp;</div>
+                            <div class="submit_button"><button id="fabu1" class="ds-post-button" type="submit">发布</button></div>
+                        </div>
+                  </div>
+          </div>
+ 
+      </div>
+       <!--登录框-->
+       <div class="login_frame" id="login_frame">
+          <div class="input_control">
+              <input type="text" id="inputName"  placeholder="Your Name" name="username">
+              <label for="inputName"></label>
+          </div>
+          <div class="img_head clearfix" id="head_pos">
+
+
+
+          </div>
+          <div class="loginbtn">
+            <button type="submit" id="login_btn" class="btn">LOGIN</button>
+          </div>
+
+       </div>
+           <!--更换头像-->
+       <div class="login_frame" id="ChangeHead_frame">
+           <div class="img_head clearfix" id="ChangeHead_pos">
+
+
+
+           </div>
+           <div class="loginbtn">
+               <button type="submit" id="ChangeHeadCan_btn" class="btn">CANCEL</button>
+               &nbsp;&nbsp;&nbsp;&nbsp;
+               <button type="submit" id="ChangeHead_btn" class="btn">LOGIN</button>
+           </div>
+
+       </div>
+           <script id="HeadImg-template" type="text/x-handlebars-template">
+               {{#each roomhead_imgs}}
+               <div class="img_sel" val="rad{{this.index}}">
+                   <div>
+                      <img src="{{this.url}}" />
+                   </div>
+                   <input type="radio"  val={{this.url}}
+                   {{#if this.flag}}checked='true' {{/if}} name="head_img" id="rad{{this.index}}"/>
+               </div>
+               {{/each}}
+           </script>
+           <script id="ChangeHeadImg-template" type="text/x-handlebars-template">
+               {{#each roomhead_imgs}}
+               <div class="img_sel" val="radd{{this.index}}">
+                   <div>
+                       <img src="{{this.url}}" />
+                   </div>
+                   <input type="radio"  val={{this.url}}
+                   {{#if this.flag}}checked='true' {{/if}} name="head_img2" id="radd{{this.index}}"/>
+               </div>
+               {{/each}}
+           </script>
+           <script id="pc-template" type="text/x-handlebars-template">
+        
+        {{#each records}}
+
+        {{#if isCurUser}}
+              
+              <div class="chat_unit_right">
+                <div class="chat_right">
+                      <div class="per_headImg_right">
+                         <img src="{{this.user.HeadUrl}}" alt="头像位置" title="{{this.user.username}}"/>
+
+                      </div>
+                  </div>
+                  
+                  <div class="per_talkUnit_right middleclass" >
+                          {{this.content}}
+                  </div>
+                  
+            </div>
+
+               {{else}}
+              <div class="chat_unit_left">
+                <div class="chat_left">
+                      <div class="per_headImg_left">
+                         <img src="{{this.user.HeadUrl}}" alt="头像位置" title="{{this.user.username}}"/>
+                      </div>
+                  </div>
+                  
+                  <div class="per_talkUnit_left middleclass" >
+                           {{this.content}}-<span class="author">{{this.user.username}}</span>
+                  </div>
+                  
+            </div>
+
+
+         {{/if}}
+          
+        {{/each}}
+      </script>
+
+
+     </div>
+     
+
+    <!-- <div id="mobile_version">
+
+          <div  class="clearfix"> 
+            <div class="chat_unit_left">
+                <div class="chat_left">
+                      <div class="per_headImg_left">
+                         <img src="/images/psv_assassin.png"/>
+                      </div>
+                  </div>
+                  
+                  <div class="per_talkUnit_left middleclass" >
+                           #【这些朋友值得一生珍惜】①激励你，让你看到自己的优点。②提醒你，让你看到自己的不足。③维护你，并能在别人面前称赞你。④和你趣味相投。⑤能把你介绍给TA的朋友。⑥能让你全身心放松。⑦能让你有机会接触新观点、新事物。⑧能帮着你理清工作和生活思路。
+                  </div>
+                  
+            </div>
+            <div class="chat_unit_left">
+                <div class="chat_left">
+                      <div class="per_headImg_left">
+                         <img src="/images/psv_assassin.png"/>
+                      </div>
+                  </div>
+                  
+                  <div class="per_talkUnit_left middleclass" >
+                           #【这些朋友值得一生珍惜】①激励你，让你看到自己的优点。②提醒你，让你看到自己的不足。③维护你，并能在别人面前称赞你。④和你趣味相投。⑤能把你介绍给TA的朋友。⑥能让你全身心放松。⑦能让你有机会接触新观点、新事物。⑧能帮着你理清工作和生活思路。
+                  </div>
+                  
+            </div>
+            <div class="chat_unit_left">
+                <div class="chat_left">
+                      <div class="per_headImg_left">
+                         <img src="/images/psv_assassin.png"/>
+                      </div>
+                  </div>
+                  
+                  <div class="per_talkUnit_left middleclass" >
+                           #【这些朋友值得一生珍惜】①激励你，让你看到自己的优点。②提醒你，让你看到自己的不足。③维护你，并能在别人面前称赞你。④和你趣味相投。⑤能把你介绍给TA的朋友。⑥能让你全身心放松。⑦能让你有机会接触新观点、新事物。⑧能帮着你理清工作和生活思路。
+                  </div>
+                  
+            </div>
+            <div class="chat_unit_right">
+                <div class="chat_right">
+                      <div class="per_headImg_right">
+                         <img src="/images/psv_assassin.png"/>
+                      </div>
+                  </div>
+                  
+                  <div class="per_talkUnit_right middleclass" >
+                           #【这些朋友值得一生珍惜】①激励你，让你看到自己的优点。②提醒你，让
+                  </div>
+                  
+            </div>
+            
+
+
+          </div>--><!-- /content -->
+
+       <!--  <div class="input_content_frame" id="fixed">
+          <input type="text" placeholder="说点什么吧…"/>
+            <button type="submit" id="fabu2">发布</button>
+        </div>
+      </div>/page -->
+       <script src="/javascripts/socket.io.js"></script>
+       <script src="/javascripts/jquery.js"></script>
+       <script type="text/javascript" src="/javascripts/Model.js"></script>
+       <script type="text/javascript" src="/javascripts/load.js"></script>
+       <script type="text/javascript" src="/javascripts/Flash_util.js"></script>
+       <script type="text/javascript" src="/javascripts/main_chatRoom.js"></script>
+       <script type="text/javascript" src="/javascripts/init_chatRoom.js"></script>
+       <script type="text/javascript" src="/javascripts/handlerbar.js"></script>
+       <script>
+           //localStorage.clear();
+           var str="<%=data%>";
+           var index=str.indexOf("&quot;");
+           while(index!=-1){
+               str=str.replace("&quot;","\"");
+               index=str.indexOf("&quot;");
+           }
+           var room_list=JSON.parse(str);
+
+           var imglist=[];
+           imglist=room_list[0];
+           var ImgList={
+               roomhead_imgs:[]
+           };
+           for(var i in imglist.roomhead_imgs){
+                 var imgUrl=imglist.roomhead_imgs[i];
+               if(i==0){
+                   ImgList.roomhead_imgs.push({url:imgUrl,index:i,flag:true});
+               }   else{
+                   ImgList.roomhead_imgs.push({url:imgUrl,index:i,flag:false});
+               }
+
+
+           }
+
+           var source = $("#HeadImg-template").html();
+          //把模板解析
+          var template = Handlebars.compile(source);
+
+          var html   = template(ImgList);
+
+          $("#head_pos").append(html);
+
+          var source2 = $("#ChangeHeadImg-template").html();
+          //把模板解析
+          var template2 = Handlebars.compile(source2);
+
+          var html2   = template2(ImgList);
+
+
+           $("#ChangeHead_pos").append(html2);
+
+
+
+                 var userRp=false;
+           $("#inputName").blur(function(){
+                  var val=$(this).val();
+               if(val==''){
+                   return false;
+               }
+               //先检查用户名是否重复
+               $.post("/userRp",{username:val},function(data){
+                   if(data=='200'){
+                       userRp=true;
+                   }else{
+                       userRp=false;
+                       $("#inputName").val('');
+                       $("#inputName").attr("placeholder","用户名重复");
+                   }
+               });
+           });
+           $("#login_btn").click(function(){
+
+               if(!userRp){
+                   $("#inputName").val('');
+                   $("#inputName").attr("placeholder","用户名重复");
+                   return;
+               }
+
+               var val=$("#inputName").val();
+               if(val==''){
+                   $("#inputName").attr("placeholder","用户名不能为空");
+                      return false;
+               }else{
+
+                   var imgurl=null;
+
+
+                   imgurl=$("#login_frame input:checked").attr("val");
+                      //console.log(imgurl);
+                   $.post("/user",{username:val,headImg:imgurl});
+
+                   localStorage.setItem("username",val);
+                   localStorage.setItem("headImg",imgurl);
+                   main_chatRoom.trigger("DomLoad");
+               }
+
+           });
+             //图片点击选中
+           $(".img_sel").click(function(){
+
+               var val=$(this).attr("val");
+               var doc=document.getElementById(val);
+               $("input[type='radio']").removeAttr("checked");
+
+               doc.checked='true';
+           });
+           var socket = io.connect('http://118.244.155.95:3001/');
+           var roomid=room_list[0].room_id;
+           socket.on("contentDown"+roomid,function(array){
+
+               main_chatRoom.trigger("OtherInfoAdd",array);
+               window.scrollTo(0,document.body.scrollHeight);
+           });
+           //点击发布按钮，触发，信息添加事件
+           $("#fabu1").click(function(){
+
+               var val=$("#chatContent1").val();
+
+
+               if(val==""||val.length>140){
+                   Flash_util.flashRed("chatContent1","textareaError");
+                   return;
+               }else{
+                   main_chatRoom.trigger("InfoAdd",val);
+                   $("#chatContent1").val('');
+                   window.scrollTo(0,document.body.scrollHeight);
+
+                   var array=[];
+                   array[0]=main_chatRoom.curUserImg;
+                   array[1]=main_chatRoom.curUser;
+                   array[2]=val;
+                   array[4]=roomid;
+
+                   socket.emit("contentUp"+roomid,array);
+                   $.post('/content',{username:array[1],userImg:array[0],content:array[2],
+                       roomId:roomid});
+
+               }
+
+           });
+           //点击头像，更换角色
+           $("#user_headImg").click(function(){
+                 $("#ChangeHead_frame").show();
+                 $("#fixed").hide();
+                 $("#pc_showPanel").hide();
+           });
+           //点击取消按钮，回复正常
+           $("#ChangeHeadCan_btn").click(function(){
+               $("#ChangeHead_frame").hide();
+               $("#fixed").show();
+               $("#pc_showPanel").show();
+           });
+           //点击确定按钮，更换缓存图片
+           $("#ChangeHead_btn").click(function(){
+               var imgurl=$("#ChangeHead_frame input:checked").attr("val");
+
+               localStorage.setItem("headImg",imgurl);
+               $("#pc_showPanel").show();
+               $("#pc_showPanel").html('');
+               main_chatRoom.trigger("DomLoad");
+           });
+       </script>
+  </body>
+
+  </html>

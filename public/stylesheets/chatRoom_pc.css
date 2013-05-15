@@ -1,0 +1,513 @@
+
+
+body{
+	padding: 0px;
+	margin: 0px;
+	background-color: #D0D6DB;
+	font-family:"Microsoft YaHei",微软雅黑,"Microsoft JhengHei",华文细黑,STHeiti,MingLiu;
+    font-size: 20px;
+    color: #DCEEF7;
+}
+
+.chat_box{
+	
+     width: 682px;
+     margin: 0 auto;
+     border-radius: 20px;
+     -moz-border-radius:20px;
+     -webkit-border-radius: 20px;
+
+     height: 100%;
+    
+}
+.chat_box >div:last-child{
+	margin-bottom: 130px;
+	
+}
+.chat_box img{
+	width: 50px;
+	height: 50px;
+	border-radius: 50px;
+    -moz-border-radius:50px;
+    -webkit-border-radius: 50px;
+    cursor: pointer;
+    -webkit-transition: 0.6s;	
+	-webkit-transition: -webkit-transform 0.6s ease-out;
+	transition: transform 0.6s ease-out;/*变化时间设置为0.4秒(变化动作即为下面的图像旋转360读）*/
+    -moz-transition: -moz-transform 0.6s ease-out;
+
+}
+.chat_box img:hover{/*设置鼠标悬浮在头像时的CSS样式*/
+	box-shadow: 0 0 10px #fff; rgba(255,255,255,.6), inset 0 0 20px rgba(255,255,255,1);
+	-webkit-box-shadow: 0 0 10px #fff; rgba(255,255,255,.6), inset 0 0 20px rgba(255,255,255,1);
+	transform: rotateZ(360deg);/*图像旋转360度*/
+	-webkit-transform: rotateZ(360deg);
+    -moz-transform: rotateZ(360deg);
+   	}
+.chat_unit_left{
+	width: 610px;
+	float: left;
+	position: relative;
+	margin-bottom: 20px;
+}
+.chat_unit_left .author{
+    font-size: 0.5em;
+}
+.chat_left{
+	float: left;
+	width: 70px;
+    position: absolute;
+}
+.per_headImg_left{
+	height: 50px;
+	width: 50px;
+	float: left;
+	border: 3px solid white;
+	border-radius: 50px;
+    -moz-border-radius:50px;
+    -webkit-border-radius: 50px;
+	background-color: blue;
+	overflow: hidden;
+	margin-top: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	position: static;
+}
+.chat_left:after{
+       content: "";
+       display: block;
+       width: 0px;
+       
+       position: absolute;
+       border-right: 30px solid #7FC2E2;
+       border-left: 20px solid transparent;
+       border-top: 10px solid transparent;
+       border-bottom: 10px solid transparent;
+       margin-top: 20px;
+       margin-left: 45px;
+}
+.per_talkUnit_left{
+	background-color: #7FC2E2;
+	float: left;
+	border-radius: 10px;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+	max-width: 500px;
+	position: relative;
+	left: 70px;
+	top: 10px;
+	padding: 10px;
+	margin-left: 10px;
+	
+}
+
+
+.chat_unit_right{
+	width: 610px;
+	float: right;
+	position: relative;
+	margin-bottom: 20px;
+}
+
+.chat_right{
+	float: right;
+	width: 70px;
+    position: relative;
+}
+.chat_right:after{
+       content: "";
+       display: block;
+       width: 0px;
+       
+       position: absolute;
+       border-left: 30px solid #7FC2E2;
+       border-right: 20px solid transparent;
+       border-top: 10px solid transparent;
+       border-bottom: 10px solid transparent;
+       margin-top: 20px;
+       margin-left: -25px;
+}
+.per_headImg_right{
+	height: 50px;
+	width: 50px;
+	float: right;
+	border: 3px solid white;
+	border-radius: 50px;
+    -moz-border-radius:50px;
+    -webkit-border-radius: 50px;
+	background-color: blue;
+	overflow: hidden;
+	margin-top: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+}
+.per_talkUnit_right{
+	background-color: #7FC2E2;
+	float: right;
+	border-radius: 10px;
+    -moz-border-radius:10px;
+    -webkit-border-radius: 10px;
+	position: absolute;
+	right: 70px;
+	
+	max-width: 500px;
+	padding: 10px;
+	margin-right: 10px;
+
+}
+/*定义登录框*/
+.login_frame{
+	width: 560px;
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	min-height: 200px;
+	
+}
+.input_control{	
+  position:relative;
+  height:100px;
+}
+.login_frame input{ 
+  position:relative;
+  font-size:18px;
+  height:56px;
+  width:100%;
+  padding-left:10px;
+  border:12px solid #fff;
+  border-radius:3px;
+  box-shadow:inset 0 0 0 1px #c0c0c0,inset 1px 2px 0 #e6e6e6,1px 2px 0 #c0c0c0,-1px 2px 0 #c0c0c0,2px 3px 0 #c0c0c0,-2px 3px 0 #c0c0c0,2px 12px 0 #c0c0c0,-2px 12px 0 #c0c0c0,0 2px 0 3px #979797,0 10px 0 3px #979797,-2px 15px 10px rgba(0,0,0,.6);
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -o-box-sizing:border-box;
+  -ms-box-sizing:border-box;
+  box-sizing:border-box;
+  -webkit-transition: all 0.1s ease-in;
+  -moz-transition: all 0.1s ease-in;
+  -ms-transition: all 0.1s ease-in;
+  -o-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+}
+.login_frame label{ 
+  position:absolute;
+  top:-2px; 
+  right:50px; 
+  width:74px; 
+  height: 56px;
+  color:#f3f2f1;
+  text-shadow:0 3px 1px #9e2719;
+  border:1px solid #dd684f;
+  background:-webkit-linear-gradient(top,#e78d7b 0,#dd684f 72px);
+  background:-moz-linear-gradient(top,#e78d7b 0,#dd684f 72px);
+  background:-o-linear-gradient(top,#e78d7b 0,#dd684f 72px);
+  background:-ms-linear-gradient(top,#e78d7b 0,#dd684f 72px);
+  background:linear-gradient(top,#e78d7b 0,#dd684f 72px);
+  box-shadow:0 14px 0 #9c2912,0 0 5px rgba(0,0,0,.3);
+  -webkit-transition: all 0.1s ease-in;
+  -moz-transition: all 0.1s ease-in;
+  -o-transition: all 0.1s ease-in;
+  -ms-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+}
+.login_frame label:after{
+  position:absolute;
+  display:block;
+  width: 74px;
+  text-align: center;
+  font: normal normal 30px/56px  'icomoon';
+  speak: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  -ms-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+.login_frame input:focus{
+  outline: 0 none;
+  top:2px; 
+  box-shadow:inset 0 0 0 1px #c0c0c0,inset 1px 2px 0 #e6e6e6,1px 2px 0 #c0c0c0,-1px 2px 0 #c0c0c0,1px 3px 0 #c0c0c0,-2px 3px 0 #c0c0c0,2px 12px 0 #c0c0c0,-2px 12px 0 #c0c0c0,0 2px 0 3px #979797,0 10px 0 3px #979797,-2px 15px 10px rgba(0,0,0,.6);
+}
+.login_frame input:focus + label{
+  top:0; 
+}
+::-webkit-input-placeholder {
+  color:#d94a2d;
+  font-style:italic;
+}
+.loginbtn{
+	text-align: center;
+
+}
+.login_frame .btn{
+  position:relative; 
+  width:210px; 
+  height:60px;
+  color:#4c6e03;
+  font:bold 35px  "Impact";
+  text-indent:10px;
+  letter-spacing:3px;
+  text-align:left;
+  margin-bottom:20px;
+  margin-right: auto;
+  margin-left: auto;
+
+  border:none;
+  border-radius:6px;
+  text-shadow:-1px 2px 0 #c4e184;
+  box-shadow:1px 2px 0 #5f8214,-1px 2px 0 #5f8214,2px 3px 0 #5f8214,-2px 3px 0 #5f8214,2px 12px 0 #5f8214,-2px 12px 0 #5f8214,0 2px 0 3px #304601,0 10px 0 3px #304601,-2px 15px 10px rgba(0,0,0,.6);
+  background:-webkit-linear-gradient(top,#c5e185,#a5c65c);
+  -webkit-transition: all 0.1s ease-in;
+  -moz-transition: all 0.1s ease-in;
+  -o-transition: all 0.1s ease-in;
+  -ms-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+}
+.login_frame .btn:after{ 
+  position:absolute;
+  display:block; 
+  content:"\25"; 
+  width:36px; 
+  height:36px; 
+  border-radius:18px; 
+  background:#5f8214; 
+  top:10px; 
+  right:20px;
+  text-indent:5px;
+  text-align:center; 
+  color:#b3d36e;
+  text-shadow:0 3px 0 #325207;
+  box-shadow:inset 0 6px 0 #325207;
+  font: normal normal 18px/40px  'icomoon';
+  speak: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  -ms-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+.login_frame .btn:hover{ 
+  background:-webkit-linear-gradient(top,#a2c452,#a5c65c);
+  background:-moz-linear-gradient(top,#a2c452,#a5c65c);
+  background:-ms-linear-gradient(top,#a2c452,#a5c65c);
+  background:-o-linear-gradient(top,#a2c452,#a5c65c);
+  background:linear-gradient(top,#a2c452,#a5c65c);
+}
+.login_frame .btn:active{
+  top:2px; 
+  box-shadow:1px 2px 0 #a5c65c,-1px 2px 0 #a5c65c,1px 3px 0 #a5c65c,-2px 3px 0 #5f8214,2px 12px 0 #5f8214,-2px 12px 0 #5f8214,0 2px 0 3px #5f8214,0 10px 0 3px #304601,-2px 15px 10px rgba(0,0,0,.6);
+}
+ /*
+定义所有的头像
+ */
+ .img_head{
+   width: auto;
+   height: auto;
+ }
+ .img_sel{
+  width: 110px;
+  
+  float: left;
+
+ }
+ .img_sel div{
+   border: 4px solid white;
+   width: 100px;
+   height: 100px;
+   border-radius: 100px;
+
+ }
+ .img_sel img{
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+  display: block;
+  cursor: pointer;
+  z-index: -99;
+
+
+ }
+
+
+ .img_sel input{
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+ }
+
+
+.clearfix:after{ content:""; height:0; visibility:hidden; display:block; clear:both;}
+.clearfix{ zoom:1;}
+
+
+.input_frame{
+	 width: 682px;
+     margin: 20px auto 0px;
+     
+     border-radius: 20px;
+     -moz-border-radius:20px;
+     -webkit-border-radius: 20px;
+     height: 108px;
+     font-size: 12px;
+	 z-index: 3;
+	 padding: 0 0 0 0px;
+	 background-color: #D0D6DB;
+	 border: 1px solid #D0D6DB;
+}
+.input_img_frame{
+	width: 80px;
+	float: left;
+   
+    text-align: center;
+    margin-bottom: -20px;
+
+    cursor:pointer;
+}
+.input_frame img{
+	width: 50px;
+	height: 50px;
+    border-radius: 10px;
+    -moz-border-radius:10px;
+    -webkit-border-radius: 10px;
+}
+.input_content_frame{
+	width: 570px;
+	float: left;
+	
+}
+.content_frame_saything {
+   margin-top: 10px;
+}
+.content_frame_saything textarea{
+    font-style: normal;
+	width: 550px;
+	height: 85px;
+	border: 1px solid #ccc;
+	outline:none;
+	resize:none;
+	padding: 10px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+    -moz-border-top-left-radius:5px;
+    -moz-border-top-right-radius:5px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-top-left-radius: 5px;
+    
+}
+.textareaError{
+      -moz-box-shadow: -1px -1px 10px red inset;
+      box-shadow: -1px -1px 10px red inset;
+   
+
+  }
+.input_content_frame{
+	margin-top: -10px;
+}
+.content_frame_button{
+	width: 100%;
+	height: 33px;
+	margin-top: -4px;
+	
+}
+.content_tool{
+	float: left;
+    width: 470px;
+   
+    line-height: 30px;
+   
+    background-repeat:no-repeat;
+	background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#e6e6e6));
+	background-image:-webkit-linear-gradient(#fcfcfc, #fff 25%, #e6e6e6);
+	background-image:-moz-linear-gradient(top, #fcfcfc, #fff 25%, #e6e6e6);
+	background-image:-ms-linear-gradient(#fcfcfc, #fff 25%, #e6e6e6);
+	background-image:linear-gradient(#fcfcfc, #fff 25%, #e6e6e6);
+	transition:all 0.15s linear;
+	-webkit-transition:all 0.15s linear;
+	-moz-transition:all 0.15s linear;
+	
+	border-bottom-color:#bbbbbb;
+	border-bottom-left-radius:3px;
+	-webkit-border-bottom-left-radius:3px;
+	border-left: 1px solid #ccc;
+	border-bottom: 1px solid #bbb;
+}
+
+
+.submit_button{
+	float: right;
+	width: 99px;
+
+}
+
+
+
+.ds-post-button{
+	font-family:'Helvetica Neue',Arial,Helvetica,sans-serif;
+	right:0px;
+	top:0;
+	height:31px;
+	margin-left: 0px;
+	width:101px;
+	text-align:center;
+	text-shadow:0 1px 0 #fff;
+	color:#555555;
+	font-size:14px;
+	font-weight:bold;
+	border:1px solid #cccccc;
+	border-top: none;
+	border-bottom-color:#bbbbbb;
+	border-bottom-right-radius:3px;
+	-webkit-border-bottom-right-radius:3px;
+	background-color:#e6e6e6;
+	background-repeat:no-repeat;
+	background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#fcfcfc), color-stop(25%, #fcfcfc), to(#e6e6e6));
+	background-image:-webkit-linear-gradient(#fcfcfc, #fcfcfc 25%, #e6e6e6);
+	background-image:-moz-linear-gradient(top, #fcfcfc, #fcfcfc 25%, #e6e6e6);
+	background-image:-ms-linear-gradient(#fcfcfc, #fcfcfc 25%, #e6e6e6);
+	background-image:linear-gradient(#fcfcfc, #fcfcfc 25%, #e6e6e6);
+	transition:all 0.15s linear;
+	-webkit-transition:all 0.15s linear;
+	-moz-transition:all 0.15s linear;
+	box-shadow:inset 0 0 1px #fff;
+	cursor: pointer;
+
+	}
+
+.ds-post-button:hover{
+   
+    color: #333;
+    background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#ccc));
+	background-image:-webkit-linear-gradient(#fff, #fcfcfc 25%, #ccc);
+	background-image:-moz-linear-gradient(top, #fff, #fcfcfc 25%, #ccc);
+	background-image:-ms-linear-gradient(#fff, #fcfcfc 25%, #ccc);
+	background-image:linear-gradient(#fff, #fcfcfc 25%, #ccc);
+}
+*body {
+
+    background-image:url(about:blank);
+
+    background-attachment:fixed; /* 必须地，防抖动 */
+
+}
+
+*body #fixed {
+
+    position:absolute;
+
+    /*top:expression(eval(document.documentElement.scrollTop+10)); /* 顶部固定悬浮 */
+
+     top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-10)); /* 底部固定悬浮 */
+
+}
+
+#fixed {
+
+    
+    bottom:0px;
+    position:fixed;
+    z-index: 200;
+    text-align: center;
+    width: 100%;
+}
