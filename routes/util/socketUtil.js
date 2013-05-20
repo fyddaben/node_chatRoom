@@ -2,35 +2,51 @@
 var mond=require('./MondbUtil');
 var socketIO = function (server) {
     var io = require('socket.io').listen(server);
-        var callback=function(doc){
-            io.on('connection', function (socket) {
+    var onlinePer=new Array();
 
-                if(doc!=null){
-                     for(var i in doc){
-                        var obj=doc[i];
-                        var id=obj.room_id;
-                        var up= "contentUp"+id;
-                         console.log(id);
+            io.on('connection', function (socket) {
+                        var up= "contentUp";
                         socket.on(up, function (data) {
 
-                            var idd=data[4];
-
+                            var idd=data[3];
                             socket.broadcast.emit("contentDown"+idd,data);
                         });
-                    }
-                }
+                        //房间连接，并穿过来用户名
 
+                        socket.emit('initConnect',onlinePer);
+
+                         socket.on("ServerConnect",function(data){
+                              //链接上一个用户，+1
+
+                             socket.userName=data;
+
+
+                             for(var i in onlinePer){
+                                 if(data==onlinePer[i]){
+                                     return ;
+                                 }
+                             }
+                             onlinePer.push(data);
+
+                             socket.emit('initConnect',onlinePer);
+                             socket.broadcast.emit('initConnect',onlinePer);
+
+                         });
+
+                         socket.on('disconnect', function()
+                         {
+                             var username= socket.userName;
+                             for(var i in onlinePer){
+                                 if(username==onlinePer[i]){
+                                     onlinePer.splice(i,1);
+                                 }
+                             }
+
+                             socket.broadcast.emit('initConnect',onlinePer);
+                         });
 
             });
 
-
-        };
-
-
-    mond.queryTable("room_talk",{},callback);
-
-    /*
-    */
 };
 
 socketIO.prototype = {

@@ -3,19 +3,32 @@
   <head>
     <title>蝉-内容页</title>
      <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+      <link href="/stylesheets/chatRoom_pc.css" rel="stylesheet">
   </head>
   <body>
        <div id="pc_version">
+           <div id="online_userDom" class="online_user">
+
+
+           </div>
+           <script id="online-template" type="text/x-handlebars-template">
+               <h3>在线:{{count}}人</h3>
+               {{#each username}}
+               <div class="online_username">{{this}}</div>
+               {{/each}}
+           </script>
+
        <div class="chat_box clearfix" id="pc_showPanel">
-            
+
+
        </div>
+       <div class="kongspace"></div>
       <!--内容输入框-->
       <div id="fixed">
 
           <div class="input_frame clearfix" >
                   <div class="input_img_frame" >
-                       <img src="/images/psv_assassin.png" id="user_headImg" />
+                       <img src="" id="user_headImg" />
                   </div>
                   <div class="input_content_frame">
                         <div class="content_frame_saything">
@@ -32,12 +45,10 @@
        <!--登录框-->
        <div class="login_frame" id="login_frame">
           <div class="input_control">
-              <input type="text" id="inputName"  placeholder="Your Name" name="username">
-              <label for="inputName"></label>
+
+              用户名: <input type="text" id="inputName"  placeholder="Your Name"  name="username">
           </div>
           <div class="img_head clearfix" id="head_pos">
-
-
 
           </div>
           <div class="loginbtn">
@@ -119,6 +130,7 @@
          {{/if}}
           
         {{/each}}
+
       </script>
 
 
@@ -195,8 +207,9 @@
        <script type="text/javascript" src="/javascripts/init_chatRoom.js"></script>
        <script type="text/javascript" src="/javascripts/handlerbar.js"></script>
        <script>
-           //localStorage.clear();
+          // localStorage.clear();
            var str="<%=data%>";
+
            var index=str.indexOf("&quot;");
            while(index!=-1){
                str=str.replace("&quot;","\"");
@@ -219,26 +232,6 @@
 
 
            }
-
-           var source = $("#HeadImg-template").html();
-          //把模板解析
-          var template = Handlebars.compile(source);
-
-          var html   = template(ImgList);
-
-          $("#head_pos").append(html);
-
-          var source2 = $("#ChangeHeadImg-template").html();
-          //把模板解析
-          var template2 = Handlebars.compile(source2);
-
-          var html2   = template2(ImgList);
-
-
-           $("#ChangeHead_pos").append(html2);
-
-
-
                  var userRp=false;
            $("#inputName").blur(function(){
                   var val=$(this).val();
@@ -274,7 +267,7 @@
 
 
                    imgurl=$("#login_frame input:checked").attr("val");
-                      //console.log(imgurl);
+
                    $.post("/user",{username:val,headImg:imgurl});
 
                    localStorage.setItem("username",val);
@@ -284,21 +277,34 @@
 
            });
              //图片点击选中
-           $(".img_sel").click(function(){
 
-               var val=$(this).attr("val");
-               var doc=document.getElementById(val);
-               $("input[type='radio']").removeAttr("checked");
-
-               doc.checked='true';
-           });
-           var socket = io.connect('http://118.244.155.95:3001/');
+           //var socket = io.connect('http://118.244.155.95:3001/');
+          var socket = io.connect(null);
            var roomid=room_list[0].room_id;
+
+          var onlinePer=null;
+
+          //初始化事件
+          socket.on("initConnect",function(data){
+
+              onlinePer=data;
+              main_chatRoom.trigger("onlineDom",data);
+          });
+
            socket.on("contentDown"+roomid,function(array){
 
                main_chatRoom.trigger("OtherInfoAdd",array);
                window.scrollTo(0,document.body.scrollHeight);
            });
+
+
+
+
+
+
+
+
+
            //点击发布按钮，触发，信息添加事件
            $("#fabu1").click(function(){
 
@@ -317,9 +323,9 @@
                    array[0]=main_chatRoom.curUserImg;
                    array[1]=main_chatRoom.curUser;
                    array[2]=val;
-                   array[4]=roomid;
+                   array[3]=roomid;
 
-                   socket.emit("contentUp"+roomid,array);
+                   socket.emit("contentUp",array);
                    $.post('/content',{username:array[1],userImg:array[0],content:array[2],
                        roomId:roomid});
 
@@ -328,6 +334,8 @@
            });
            //点击头像，更换角色
            $("#user_headImg").click(function(){
+
+                 main_chatRoom.trigger("loadHead_choose",ImgList);
                  $("#ChangeHead_frame").show();
                  $("#fixed").hide();
                  $("#pc_showPanel").hide();

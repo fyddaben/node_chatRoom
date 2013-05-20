@@ -56,7 +56,7 @@ DataCache.prototype={
              return bigest;
          },  //绑定事件
          bind:function(ev,callback){
-                  //  console.log("bind");
+
              this.conObject.bind(ev,callback);
 
          },  //触发事件
@@ -259,7 +259,7 @@ drawTool.prototype={
 
             }
             var length=flag;
-             console.log(length);
+
             var index=0;
               for(var i in this.records){
                   var time=this.records[i].dataTime;
@@ -281,7 +281,7 @@ drawTool.prototype={
             this.dTool.stroke();
             this.dTool.fillStyle="rgb(164,209,228)";
             this.dTool.strokeStyle="rgb(164,209,228)";
-            console.log(lastx+":"+lasty);
+
             this.dTool.moveTo(lastx,lasty);
             this.dTool.lineTo(lastx,290);
             this.dTool.lineTo(0,290);

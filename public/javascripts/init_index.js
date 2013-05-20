@@ -2,12 +2,12 @@
 
 $(function(){
     var width= document.body.clientWidth;
-	//console.log(width);
+
 	//if(width>=620){
 	      
 	   // var d=document.getElementById('mobile_version');
 	  //  d.style.display="none";
-	    loadjscssfile('/stylesheets/index_pc.css','css');
+	   // loadjscssfile('/stylesheets/index_pc.css','css');
 
 
             var array=[];

@@ -80,7 +80,7 @@ var  main_chatRoom={
                 //这里要判断是否为当前用户所发的内容
                 var attr=allrec[i].attributes();
                 var uname=attr.user.username;
-                console.log(uname+"::");
+
                 if(uname==this.curUser){
                     attr.isCurUser=true;
                 }else{
@@ -90,6 +90,18 @@ var  main_chatRoom={
             }
 
 
+
+        },
+        updateUserFlag:function(){
+            for(var i in this.records){
+                var obj=this.records[i];
+                var uname=obj.user.username;
+                if(uname==this.curUser){
+                    this.records[i].isCurUser=true;
+                }else{
+                    this.records[i].isCurUser=false;
+                }
+            }
         },
         getRecords:function(){
         	return this.records;
@@ -115,7 +127,7 @@ var  main_chatRoom={
          var records=main_chatRoom.getRecords();
 
 
-         //console.log(records);
+
          //定义DOMLOAD完成后，执行的函数内容
          var domloadfun=function(loadList){
 
@@ -123,7 +135,9 @@ var  main_chatRoom={
               //通过local.storage中查询是否含有用户名和头像数据.没有则要求登录
                var username=localStorage.getItem("username");
                var headimg=localStorage.getItem("headImg");
-
+                 if(loadList){
+                     main_chatRoom.updateData(loadList);
+                 }
                if(username!=null&&headimg!=null){
 
                    $("#login_frame").fadeOut(100,function(){
@@ -135,13 +149,18 @@ var  main_chatRoom={
                    $("#user_headImg").attr("title",username);
                    main_chatRoom.curUserImg=headimg;
                    main_chatRoom.curUser=username;
+
+                   main_chatRoom.updateUserFlag();
+                  socket.emit("ServerConnect",username);
                }else{
+                   main_chatRoom.trigger("loadHead_login",ImgList);
                    $("#login_frame").show();
                    $("#ChangeHead_frame").hide();
+
                    return false;
                }
-               console.log(loadList);
-               main_chatRoom.updateData(loadList);
+
+
               var rec=main_chatRoom;
 
               var source = $("#pc-template").html();	
@@ -152,6 +171,7 @@ var  main_chatRoom={
               
               
              $("#pc_showPanel").append(html);
+             window.scrollTo(0,document.body.scrollHeight);
              $("#fixed").show();
 
          };
@@ -170,7 +190,7 @@ var  main_chatRoom={
                              name:main_chatRoom.roomName,
                              id:main_chatRoom.roomNum
                            },
-                    isCurUser:"true"
+                    isCurUser:true
 
                     };
           //放入存储空间
@@ -234,14 +254,84 @@ var  main_chatRoom={
 
 
     };
-         
+
+      //加载登陆框的选择头像信息
+       var   loadHead_flag=0;
+       var loadHead_login=function(imglist){
+           loadHead_flag++;
+           if(loadHead_flag==1){
+               var source = $("#HeadImg-template").html();
+               //把模板解析
+               var template = Handlebars.compile(source);
+
+               var html   = template(imglist);
+
+               $("#head_pos").append(html);
+               main_chatRoom.trigger("clickCpic");
+           }
+
+       };
+    //加载选择头像的信息
+       var   loadHead_choose_flag=0;
+       var loadHead_choose=function(imglist){
+           loadHead_choose_flag++;
+           if(loadHead_choose_flag==1){
+               var source2 = $("#ChangeHeadImg-template").html();
+               //把模板解析
+               var template2 = Handlebars.compile(source2);
+
+               var html2   = template2(imglist);
+
+
+               $("#ChangeHead_pos").append(html2);
+               main_chatRoom.trigger("clickCpic");
+           }
+
+       }
+    // 记录一个点击图片切换焦点的事件
+
+      var clickCpic=function(){
+          $(".img_sel").click(function(){
+
+              var val=$(this).attr("val");
+
+              var doc=document.getElementById(val);
+              $("input[type='radio']").removeAttr("checked");
+
+              doc.checked='true';
+          });
+      }
+
+     //在线人数改变的时候
+      var onlineDom=function(data){
+
+          var onlineer={
+              count:data.length,
+              username:data
+
+          }
+          var source2 = $("#online-template").html();
+          //把模板解析
+          var template2 = Handlebars.compile(source2);
+
+          var html2   = template2(onlineer);
+
+          $("#online_userDom").html(html2);
+
+      }
          main_chatRoom.bind("DomLoad",domloadfun);
 
          main_chatRoom.bind("InfoAdd",infoAddfun);
 
          main_chatRoom.bind("OtherInfoAdd",OtherinfoAddfun);
-         
 
+         main_chatRoom.bind("loadHead_login",loadHead_login);
+
+         main_chatRoom.bind("loadHead_choose",loadHead_choose);
+
+         main_chatRoom.bind("clickCpic",clickCpic);
+
+         main_chatRoom.bind("onlineDom",onlineDom) ;
 })();
          
         

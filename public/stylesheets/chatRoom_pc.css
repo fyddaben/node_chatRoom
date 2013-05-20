@@ -9,6 +9,25 @@ body{
     color: #DCEEF7;
 }
 
+.online_user{
+    width:100px;
+    position: absolute;
+
+    margin-top: 20px;
+}
+.online_user h1{
+    color: white;
+}
+.online_user .online_username{
+    position:relative;
+    line-height: 30px;
+                margin-top: 5px;
+    height: 30px;
+    color: green;
+    font-weight: bold;
+              text-align: center;
+
+}
 .chat_box{
 	
      width: 682px;
@@ -20,10 +39,16 @@ body{
      height: 100%;
     
 }
-.chat_box >div:last-child{
-	margin-bottom: 130px;
-	
+.kongspace{
+    width: 100%;
+    height: 130px;
+
 }
+/*.chat_box >div:last-child{
+	margin-bottom: 130px;
+
+
+}   */
 .chat_box img{
 	width: 50px;
 	height: 50px;
